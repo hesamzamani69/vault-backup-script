@@ -6,7 +6,10 @@ As you know there are different types of backend storage for hashicorp Vault dep
 
 # Stop Vault server
 vault operator step-down
+# use the below line if Vault is deployed as a service in the OS
 vault server -config=/etc/vault/config.hcl -dev -dev-listen-address="127.0.0.1:8201" &
+# use the below line if Vault is deployed as a pod in a Kubernetes Cluster.
+vault server -config=/vault/data/extraconfig-from-values.hcl -dev -dev-listen-address="127.0.0.1:8201" &
 sleep 10 # Wait for Vault to start
 
 # Take a backup of the Vault data directory
